@@ -1,0 +1,5 @@
+Rivista,8845290058,focus,2023,145,MENSILE
+Libro,8845290051,Il signore degli asinelli,2002,1000,Tolkien,Fantasy
+Rivista,8845290054,LinuxMagazine,2022,250,MENSILE
+Libro,8845290052,Il signore degli muli,2002,1000,J.R.R.Tolkien,Fantasy
+Rivista,8845290053,Quattroruote,2022,110,MENSILE

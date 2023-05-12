@@ -46,6 +46,9 @@ public class Archivio {
 	}
 
 	public void salvaArchivio() throws IOException {
+		if (FILE.delete()) {
+			logger.info("File cancellato con successo!");
+		}
 		for (Pubblicazione p : archivio.values()) {
 			String record = "";
 			if (p instanceof Libro) {
@@ -65,6 +68,9 @@ public class Archivio {
 	}
 
 	public void caricaArchivio() throws IOException {
+		if (!FILE.exists()) {
+			throw new IOException("File non esistente");
+		}
 		archivio.clear();
 		List<String> readRecords = new ArrayList<String>();
 		readRecords = FileUtils.readLines(FILE, "UTF-8");
@@ -79,9 +85,7 @@ public class Archivio {
 						Integer.parseInt(r[4]), Periodicita.valueOf(r[5])));
 			}
 		}
-		if (FILE.delete()) {
-			logger.info("File cancellato con successo!");
-		}
+
 	}
 
 }
