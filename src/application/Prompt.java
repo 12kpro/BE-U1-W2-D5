@@ -81,7 +81,11 @@ public class Prompt {
                         catalogo.aggiungiPubblicazione(new Rivista(codice,titolo,annoPubblicazione,numPagine,periodicita));
                         break;
                     case 3:
-                        catalogo.salvaArchivio();
+                        if(catalogo.getArchivio().size() > 0) {
+                            catalogo.salvaArchivio();
+                        }else{
+                            logger.info("Nessuna pubblicazzione da salvare");
+                        }
                         break;
                     case 4:
                         catalogo.caricaArchivio();
@@ -95,15 +99,12 @@ public class Prompt {
                     case 6:
                         System.out.print("Inserisci Autore:");
                         autore = input.nextLine();
-                        //List<Libro> ricercaPerAutore = catalogo.cercaPerAutore(autore);
                         catalogo.cercaPerAutore(autore).forEach(pAut -> logger.info("{} dell'autore: {}", pAut.getTitolo(), pAut.getAutore()));
                         break;
                     case 7:
                         System.out.print("Inserisci Anno di pubblicazione:");
                         annoPubblicazione = Math.abs(Integer.parseInt(input.nextLine()));
                         System.out.print("Inserisci Numero Pagine:");
-//                        List<Pubblicazione> cercaPerAnnoPubblicazione = catalogo.cercaPerAnnoPubblicazione(2002);
-
                         catalogo.cercaPerAnnoPubblicazione(annoPubblicazione).forEach(pAnno -> logger.info("{} pubblicato nel: {}", pAnno.getTitolo(), pAnno.getAnnoPubblicazione()));
                         break;
                     case 8:
@@ -128,7 +129,7 @@ public class Prompt {
             } catch (NumberFormatException e) {
                 logger.info("Devi inserire un numero intero positivo!!");
             } catch (IOException e) {
-                logger.error("Errore durante la lettura/scrittura", e.getMessage());
+                logger.error("Errore durante la lettura/scrittura {}", e.getMessage());
         }
     }
 }}
