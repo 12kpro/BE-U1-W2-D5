@@ -6,7 +6,7 @@ public abstract class Pubblicazione {
 	protected int annoPubblicazione;
 	protected int numPagine;
 
-	public Pubblicazione(Long codice, String titolo, int annoPubblicazione, int mumPagine) {
+	public Pubblicazione(Long codice, String titolo, int annoPubblicazione, int numPagine) {
 		setTitolo(titolo);
 		setAnnoPubblicazione(annoPubblicazione);
 		setNumPagine(numPagine);

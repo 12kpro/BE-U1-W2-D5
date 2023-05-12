@@ -4,8 +4,8 @@ public class Libro extends Pubblicazione {
 	private String autore;
 	private String genere;
 
-	public Libro(Long codice, String titolo, int annoPubblicazione, int mumPagine, String autore, String genere) {
-		super(codice, titolo, annoPubblicazione, mumPagine);
+	public Libro(Long codice, String titolo, int annoPubblicazione, int numPagine, String autore, String genere) {
+		super(codice, titolo, annoPubblicazione, numPagine);
 		setAutore(autore);
 		setGenere(genere);
 	}

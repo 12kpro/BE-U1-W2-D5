@@ -2,10 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -63,24 +60,27 @@ public class Archivio {
 						+ System.lineSeparator();
 			}
 			FileUtils.writeStringToFile(FILE, record, "UTF-8", true);
-			logger.info("Dati salvati correttamente sul file " + FILE);
-
 		}
+		logger.info("Dati salvati correttamente sul file " + FILE);
 	}
 
 	public void caricaArchivio() throws IOException {
 		archivio.clear();
 		List<String> readRecords = new ArrayList<String>();
 		readRecords = FileUtils.readLines(FILE, "UTF-8");
+		logger.info("Dati letti correttamente dal file ");
 		for (String s : readRecords) {
 			String[] r = s.split(",");
-			if (r[0] == "Libro") {
-				this.aggiungiPubblicazione(new Libro(Long.parseLong(r[1]), r[2], Integer.parseInt(r[2]),
-						Integer.parseInt(r[3]), r[4], r[5]));
-			} else if (r[0] == "Rivista") {
-				this.aggiungiPubblicazione(new Rivista(Long.parseLong(r[1]), r[2], Integer.parseInt(r[2]),
-						Integer.parseInt(r[3]), Periodicita.valueOf(r[4])));
+			if (r[0].equals("Libro")) {
+				this.aggiungiPubblicazione(new Libro(Long.parseLong(r[1]), r[2], Integer.parseInt(r[3]),
+						Integer.parseInt(r[4]), r[5], r[6]));
+			} else if (r[0].equals("Rivista")) {
+				this.aggiungiPubblicazione(new Rivista(Long.parseLong(r[1]), r[2], Integer.parseInt(r[3]),
+						Integer.parseInt(r[4]), Periodicita.valueOf(r[5])));
 			}
+		}
+		if (FILE.delete()) {
+			logger.info("File cancellato con successo!");
 		}
 	}
 

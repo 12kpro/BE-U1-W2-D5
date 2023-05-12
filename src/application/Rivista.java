@@ -3,8 +3,8 @@ package application;
 public class Rivista extends Pubblicazione {
 	private Periodicita periodicita;
 
-	public Rivista(Long codice, String titolo, int annoPubblicazione, int mumPagine, Periodicita periodicita) {
-		super(codice, titolo, annoPubblicazione, mumPagine);
+	public Rivista(Long codice, String titolo, int annoPubblicazione, int numPagine, Periodicita periodicita) {
+		super(codice, titolo, annoPubblicazione, numPagine);
 		setPeriodicita(periodicita);
 	}
 
