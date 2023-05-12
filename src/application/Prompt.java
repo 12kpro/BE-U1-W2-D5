@@ -15,7 +15,7 @@ public class Prompt {
         Archivio catalogo = new Archivio();
 
         Scanner input = new Scanner(System.in);
-        String options[] = { "0 Per Uscire", "1 Aggiungi libro", "2 Aggiungi Rivista", "3 Salva Archivio su disco", "4 Leggi Archivio da disco" , "5 Cerca per ISBN", "6 Cerca per Autore", "7 Cerca per anno pubblicazione","8 Rimuovi pubblicazione per ISBN","9 Carica dati di esempio"};
+        String options[] = { "0: Per Uscire", "1: Aggiungi/Aggiorna libro", "2: Aggiungi/Aggiorna Rivista", "3: Salva Archivio su disco", "4: Leggi Archivio da disco" , "5: Cerca per ISBN", "6: Cerca per Autore", "7: Cerca per anno pubblicazione","8: Rimuovi pubblicazione per ISBN","9: Carica dati di esempio"};
         Long codice;
         String titolo;
         String autore;
@@ -26,7 +26,7 @@ public class Prompt {
         choice: while (true) {
             try {
                 System.out.println("Seleziona una delle seguenti opzioni: ");
-                System.out.println(Arrays.asList(options));
+                Arrays.stream(options).forEach(o -> System.out.println(o));
                 int option = Math.abs(Integer.parseInt(input.nextLine()));
                 switch (option) {
                     case 0:

@@ -20,10 +20,12 @@ public class Archivio {
         return archivio;
     }
     public void aggiungiPubblicazione(Pubblicazione p) {
-
-        if (archivio.put(p.getCodice(), p) == null)
+        Pubblicazione pubblicazioneAggiunta = archivio.put(p.getCodice(), p);
+        if ( pubblicazioneAggiunta == null) {
             logger.info("{} aggiunto in archivio con ISBN: {}", p.getTitolo(), p.getCodice());
-
+        } else {
+            logger.info("Titolo: {} ISBN: {} aggiornato con successo", p.getTitolo(), p.getCodice());
+        }
     }
 
     public void rimuoviPublicazione(Long isbn) {
